@@ -1,0 +1,4 @@
+# 같은 폴더 내의 common.txt 파일 내용을 읽어온다.
+-r common.txt
+
+django-debug-toolbar
