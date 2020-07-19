@@ -26,10 +26,16 @@ class Post(TimeStampField):
     tags = models.ManyToManyField("Tag", blank=True)
 
 
-class PostImage(TimeStampField):
-    post = models.ForeignKey(Post, on_delete=models.CASCADE)
-    image = models.ImageField(upload_to="api/post/%Y/%m/%d")
-    index_time = models.IntegerField(default=0)
+class PostImage(models.Model):
+    post = models.ForeignKey(Post, on_delete=models.CASCADE, blank=True, null=True)
+    image = models.ImageField(upload_to="images/%Y/%m/%d")
+    index_time = models.DurationField(default=0)
+
+
+class PostAudio(models.Model):
+    post = models.ForeignKey(Post, on_delete=models.CASCADE, blank=True, null=True)
+    audio = models.ImageField(upload_to="audios/%Y/%m/%d")
+    duration = models.DurationField()
 
 
 class Comment(TimeStampField):
